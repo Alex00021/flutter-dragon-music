@@ -12,7 +12,6 @@ class _IndexPageState extends State<IndexPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      // appBar: AppBar(),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(20),

@@ -1,8 +1,6 @@
 import 'dart:async';
-
 import 'package:dragon_sound/root/phone_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 
 /// 注册界面
@@ -221,19 +219,53 @@ class _SignUpPageState extends State<SignUpPage> {
                                     Positioned(
                                       right: 10,
                                       top: 6,
-                                      child:  FlatButton(
-                                        disabledTextColor: Colors.grey,
-                                        splashColor: Colors.transparent,
-                                        highlightColor:
-                                        Colors.transparent,
+                                      child:  TextButton(
+                                        style: ButtonStyle(
+                                          backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                            //设置按下时的背景颜色
+                                            if (states.contains(MaterialState.pressed)) {
+                                              return Colors.blue[200];
+                                            }
+                                            //默认不使用背景颜色
+                                            return Colors.white;
+                                          }),
+                                          //设置水波纹颜色
+                                          overlayColor: MaterialStateProperty.all(Colors.yellow),
+                                          //设置阴影  不适用于这里的TextButton
+                                          elevation: MaterialStateProperty.all(4),
+                                          //设置按钮内边距
+                                          // padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                                          //设置按钮的大小
+                                          minimumSize: MaterialStateProperty.all(const Size(40, 20)),
+                                          //设置边框
+                                          // side:
+                                          // MaterialStateProperty.all(const BorderSide(color: Colors.grey, width: 1)),
+                                          //外边框装饰 会覆盖 side 配置的样式
+                                          shape: MaterialStateProperty.all(const StadiumBorder()),
+                                          //更优美的方式来设置
+                                          foregroundColor: MaterialStateProperty.resolveWith(
+                                                (states) {
+                                              // if (states.contains(MaterialState.focused) &&
+                                              //     !states.contains(MaterialState.pressed)) {
+                                              //   //获取焦点时的颜色
+                                              //   return Colors.blue;
+                                              // } else if (states.contains(MaterialState.pressed)) {
+                                              //   //按下时的颜色
+                                              //   return Colors.deepPurple;
+                                              // }
+                                              // //默认状态使用灰色
+                                              // return Colors.grey;
+                                                  count < 61
+                                                      ? Colors.grey
+                                                      : Colors.blueAccent;
+                                            },
+                                          ),
+                                        ),
                                         onPressed: () {
                                           // forgotPassword();
                                           getVerificationCode();
                                         },
-                                        padding: const EdgeInsets.only(top: 0),
-                                        textColor: count < 61
-                                            ? Colors.grey
-                                            : Colors.blueAccent,
+
                                         child: Text(getCodeText, style: const TextStyle(fontSize: 13)),
                                       ),
                                     )
@@ -241,16 +273,37 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                                 const SizedBox(height: 21,),
                                 Expanded(
-                                  child: FlatButton(
-                                      minWidth: 168,
-                                      height: 30,
-                                      color: Colors.blueGrey,
-                                      shape: const StadiumBorder(),
+                                  child: TextButton(
+                                      style: ButtonStyle(
+                                        backgroundColor: MaterialStateProperty.resolveWith((states) {
+                                          //设置按下时的背景颜色
+                                          if (states.contains(MaterialState.pressed)) {
+                                            return Colors.blue[200];
+                                          }
+                                          //默认不使用背景颜色
+                                          return Colors.blue;
+                                        }),
+                                        //设置水波纹颜色
+                                        overlayColor: MaterialStateProperty.all(Colors.yellow),
+                                        //设置阴影  不适用于这里的TextButton
+                                        elevation: MaterialStateProperty.all(4),
+                                        //设置按钮内边距
+                                        // padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                                        //设置按钮的大小
+                                        minimumSize: MaterialStateProperty.all(const Size(130, 56)),
+                                        //设置边框
+                                        side:
+                                        MaterialStateProperty.all(const BorderSide(color: Colors.grey, width: 1)),
+                                        //外边框装饰 会覆盖 side 配置的样式
+                                        shape: MaterialStateProperty.all(const StadiumBorder()),
+                                      ),
                                       onPressed: (){
                                         // inputLogin();
-                                        Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPages()));
+                                        Navigator.push(context, MaterialPageRoute(builder: (_) => const LoginPages()));
                                       },
-                                      child: const Text("注册", style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 19),)),
+                                      child: const Text(
+                                        "注册",
+                                        style: TextStyle(color: Colors.black, fontWeight: FontWeight.w400, fontSize: 16),)),
                                 )
 
                               ],
@@ -392,7 +445,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: const Text("OK"),
               onPressed: () {
                 Navigator.of(context).pop();
@@ -424,7 +477,7 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
           ),
           actions: <Widget>[
-            FlatButton(
+            TextButton(
               child: const Text("YES"),
               onPressed: () {
                 // Navigator.of(context).pop();

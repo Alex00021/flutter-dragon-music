@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-
 import '../constant/show_toast.dart';
 
 /// 登录页
@@ -74,10 +72,10 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
     return Scaffold(
         backgroundColor: CupertinoColors.white,
         // 包裹防止使用键盘输入溢出
-        body: new SingleChildScrollView(
+        body: SingleChildScrollView(
             scrollDirection: Axis.vertical,
-            child: new ConstrainedBox(
-              constraints: new BoxConstraints(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
                 maxHeight: height,
               ),
               child: GestureDetector(
@@ -90,7 +88,7 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                       // image
                       Container(
                         // 装饰
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           // 装饰图片/背景图片
                             image: DecorationImage(
                               image: AssetImage("assets/images/dl.png"),
@@ -108,9 +106,9 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                           height: height,
                           child: Column(
                             children: [
-                              SizedBox(height: 190),
+                              const SizedBox(height: 190),
                               Image.asset("assets/images/yr.png", fit: BoxFit.cover, width: 90, height: 90),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               Stack(
                                 children: [
                                   Container(
@@ -127,11 +125,11 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                                                   // 设置未选中时的字体颜色，tabs里面的字体样式优先级最高
                                                   unselectedLabelColor: Colors.grey,
                                                   // 设置未选中时的字体样式，tabs里面的字体样式优先级最高
-                                                  unselectedLabelStyle: TextStyle(fontSize: 20),
+                                                  unselectedLabelStyle: const TextStyle(fontSize: 20),
                                                   // 设置选中时的字体颜色，tabs里面的字体样式优先级最高
                                                   labelColor: Colors.black,
                                                   // 设置选中时的字体样式，tabs里面的字体样式优先级最高
-                                                  labelStyle: TextStyle(fontSize: 20.0),
+                                                  labelStyle: const TextStyle(fontSize: 20.0),
                                                   // 允许左右滚动
                                                   isScrollable: true,
                                                   // 选中下划线的颜色
@@ -141,15 +139,15 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                                                   //选中下划线的高度，值越大高度越高，默认为2。0
                                                   // indicatorWeight: 6.0,
                                                   controller: tabController,
-                                                  tabs: [
+                                                  tabs: const [
                                                     Text("密码登录",style: TextStyle(fontSize: 20.0)),
                                                     Text("快速注册",style: TextStyle(fontSize: 20.0))
                                                   ]),
                                             ),
-                                            SizedBox(height: 12),
+                                            const SizedBox(height: 12),
                                             Expanded(
                                                 child: Container(
-                                                  margin: EdgeInsets.only(left: 40, right: 40),
+                                                  margin: const EdgeInsets.only(left: 40, right: 40),
                                                   child: TabBarView(
                                                     controller: tabController,
                                                     children: [
@@ -161,44 +159,44 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                                                   ),
                                                 )
                                             ),
-                                            SizedBox(height: 13),
+                                            const SizedBox(height: 13),
                                           ]
                                       )
                                   )
                                 ],
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Container(
-                                  margin: EdgeInsets.only(left: 33, right: 33),
+                                  margin: const EdgeInsets.only(left: 33, right: 33),
                                   child: Column(
                                       children: [
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                           children: [
                                             Container(
-                                              decoration: new BoxDecoration(
-                                                  boxShadow: [
+                                              decoration: BoxDecoration(
+                                                  boxShadow: const [
                                                     BoxShadow(color: Colors.grey, blurRadius: 20.0)
                                                   ],
                                                   color: Colors.orange,
-                                                  borderRadius: new BorderRadius.circular((20.0))),
+                                                  borderRadius: BorderRadius.circular((20.0))),
                                               width: 100,
                                               height: 3,
                                             ),
-                                            Text("第三方登录"),
+                                            const Text("第三方登录"),
                                             Container(
-                                              decoration: new BoxDecoration(
-                                                  boxShadow: [
+                                              decoration: BoxDecoration(
+                                                  boxShadow: const [
                                                     BoxShadow(color: Colors.grey, blurRadius: 20.0)
                                                   ],
                                                   color: Colors.orange,
-                                                  borderRadius: new BorderRadius.circular((20.0))),
+                                                  borderRadius: BorderRadius.circular((20.0))),
                                               width: 100,
                                               height: 3,
                                             )
                                           ],
                                         ),
-                                        SizedBox(height: 7,),
+                                        const SizedBox(height: 7,),
                                         Container(
                                             child: Row(
                                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -236,7 +234,7 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                                       ]
                                   )
                               ),
-                              SizedBox(height: 21)
+                              const SizedBox(height: 21)
                             ],
                           ),
                         ),
@@ -257,7 +255,7 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
           key: phoneNumberKey,
           child: Column(
             children: [
-              new TextFormField(
+              TextFormField(
                 autofocus: false,
                 autocorrect: false,
                 controller: phoneController,
@@ -270,23 +268,23 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                 //   WhitelistingTextInputFormatter.digitsOnly,
                 //   LengthLimitingTextInputFormatter(11)
                 // ],
-                decoration: new InputDecoration(
+                decoration: InputDecoration(
                     hintText: "请输入您的手机号码",
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context)
                                 .accentColor
                                 .withOpacity(0.2))),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Colors.black12)),
                     prefixIcon: Image.asset("assets/images/2.0x/phone_num.png", width: 24, height: 26,)
                 ),
               ),
-              SizedBox(height: 16),
+              const SizedBox(height: 16),
               Form(
                 key: pwdKey,
-                child: new TextFormField(
+                child: TextFormField(
                   controller: pwdController,
                   autofocus: false,
                   autocorrect: false,
@@ -299,26 +297,45 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                     pwd = val;
                   },
                   keyboardType: TextInputType.emailAddress,
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                       hintText: "请输入密码",
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context)
                                   .accentColor
                                   .withOpacity(0.2))),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.black12)),
                       prefixIcon: Image.asset("assets/images/2.0x/pwd.png", width: 26, height: 26,)
                   ),
                 ),
               ),
-              SizedBox(height: 18),
-              FlatButton(
-                  minWidth: 300,
-                  height: 40,
-                  shape: StadiumBorder(),
-                  color: Colors.redAccent,
+              const SizedBox(height: 18),
+              TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith((states) {
+                      //设置按下时的背景颜色
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.blue[200];
+                      }
+                      //默认不使用背景颜色
+                      return Colors.blue;
+                    }),
+                    //设置水波纹颜色
+                    overlayColor: MaterialStateProperty.all(Colors.yellow),
+                    //设置阴影  不适用于这里的TextButton
+                    elevation: MaterialStateProperty.all(4),
+                    //设置按钮内边距
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                    //设置按钮的大小
+                    minimumSize: MaterialStateProperty.all(const Size(200, 52)),
+                    //设置边框
+                    // side:
+                    // MaterialStateProperty.all(const BorderSide(color: Colors.grey, width: 1)),
+                    //外边框装饰 会覆盖 side 配置的样式
+                    shape: MaterialStateProperty.all(const StadiumBorder()),
+                  ),
                   onPressed: () {
                     var phoneNumKey = phoneNumberKey.currentState;
                     var pwdNumKey = pwdKey.currentState;
@@ -336,10 +353,10 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                       }
                     }
                   },
-                  child: Text("登录",
+                  child: const Text("登录",
                       style: TextStyle(fontSize: 24, color: Colors.white),
                       textAlign: TextAlign.center)),
-              SizedBox(height: 13),
+              const SizedBox(height: 13),
             ],
           ),
         )
@@ -355,7 +372,7 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
           key: phoneNumberKey,
           child: Column(
             children: [
-              new TextFormField(
+              TextFormField(
                 autofocus: false,
                 autocorrect: false,
                 keyboardType: TextInputType.phone,
@@ -368,25 +385,25 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                 //   WhitelistingTextInputFormatter.digitsOnly,
                 //   LengthLimitingTextInputFormatter(11)
                 // ],
-                decoration: new InputDecoration(
+                decoration: InputDecoration(
                     hintText: "请输入您的手机号",
                     enabledBorder: UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Theme.of(context)
                                 .accentColor
                                 .withOpacity(0.2))),
-                    focusedBorder: UnderlineInputBorder(
+                    focusedBorder: const UnderlineInputBorder(
                         borderSide: BorderSide(
                             color: Colors.black12)),
                     prefixIcon: Image.asset("assets/images/2.0x/phone_num.png", width: 24, height: 26,)
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Stack(
                 children: [
                   Form(
                     key: codeKey,
-                    child: new TextFormField(
+                    child: TextFormField(
                       autofocus: false,
                       autocorrect: false,
                       keyboardType: TextInputType.phone,
@@ -399,14 +416,14 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                       //   WhitelistingTextInputFormatter.digitsOnly,
                       //   LengthLimitingTextInputFormatter(6)
                       // ],
-                      decoration: new InputDecoration(
+                      decoration: InputDecoration(
                         hintText: "请输入验证码",
                         enabledBorder: UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Theme.of(context)
                                     .accentColor
                                     .withOpacity(0.2))),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                             borderSide: BorderSide(
                                 color: Colors.black12)),
                         prefixIcon: Image.asset("assets/images/2.0x/code.png", width: 24, height: 26,),
@@ -445,10 +462,10 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                   // )
                 ],
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Form(
                 key: pwdKey,
-                child: new TextFormField(
+                child: TextFormField(
                   autofocus: false,
                   autocorrect: false,
                   keyboardType: TextInputType.emailAddress,
@@ -461,26 +478,45 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                   onSaved: (val) {
                     pwd = val;
                   },
-                  decoration: new InputDecoration(
+                  decoration: InputDecoration(
                       hintText: "请输入密码",
                       enabledBorder: UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Theme.of(context)
                                   .accentColor
                                   .withOpacity(0.2))),
-                      focusedBorder: UnderlineInputBorder(
+                      focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(
                               color: Colors.black12)),
                       prefixIcon: Image.asset("assets/images/2.0x/pwd.png", width: 24, height: 26,)
                   ),
                 ),
               ),
-              SizedBox(height: 18),
-              FlatButton(
-                  minWidth: 300,
-                  height: 40,
-                  shape: StadiumBorder(),
-                  color: Colors.redAccent,
+              const SizedBox(height: 18),
+              TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.resolveWith((states) {
+                      //设置按下时的背景颜色
+                      if (states.contains(MaterialState.pressed)) {
+                        return Colors.blue[200];
+                      }
+                      //默认不使用背景颜色
+                      return Colors.blue;
+                    }),
+                    //设置水波纹颜色
+                    overlayColor: MaterialStateProperty.all(Colors.yellow),
+                    //设置阴影  不适用于这里的TextButton
+                    elevation: MaterialStateProperty.all(4),
+                    //设置按钮内边距
+                    padding: MaterialStateProperty.all(const EdgeInsets.all(10)),
+                    //设置按钮的大小
+                    minimumSize: MaterialStateProperty.all(const Size(200, 52)),
+                    //设置边框
+                    // side:
+                    // MaterialStateProperty.all(const BorderSide(color: Colors.grey, width: 1)),
+                    //外边框装饰 会覆盖 side 配置的样式
+                    shape: MaterialStateProperty.all(const StadiumBorder()),
+                  ),
                   onPressed: () {
                     var phoneNumKey = phoneNumberKey.currentState;
                     var pwdNumKey = pwdKey.currentState;
@@ -504,10 +540,10 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
                         ShowToast.show("请先输入密码");
                       }
                     }},
-                  child: Text("注册",
+                  child: const Text("注册",
                       style: TextStyle(fontSize: 24, color: Colors.white),
                       textAlign: TextAlign.center)),
-              SizedBox(height: 4),
+              const SizedBox(height: 4),
             ],
           ),
         )
@@ -520,7 +556,7 @@ class _LoginPagesState extends State<LoginPages> with TickerProviderStateMixin {
     //取消倒计时
     countDownTimer?.cancel();
     countDownTimer = null;
-    countDownTimer = new Timer.periodic(new Duration(seconds: 1), (t) {
+    countDownTimer = Timer.periodic(new Duration(seconds: 1), (t) {
       count--;
       setState(() {
         if ((count == 0)) {

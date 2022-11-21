@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:dragon_sound/root/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
